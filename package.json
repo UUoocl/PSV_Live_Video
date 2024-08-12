@@ -1,0 +1,19 @@
+{
+  "name": "psv_live_video",
+  "version": "0.0.1",
+  "description": "360 webcam video adapter",
+  "main": "psv_live.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "uuoocl",
+  "license": "MIT",
+  "dependencies": {
+    "@photo-sphere-viewer/autorotate-plugin": "^5.9.0",
+    "@photo-sphere-viewer/core": "^5.9.0",
+    "@photo-sphere-viewer/equirectangular-video-adapter": "^5.9.0",
+    "@photo-sphere-viewer/resolution-plugin": "^5.9.0",
+    "@photo-sphere-viewer/settings-plugin": "^5.9.0",
+    "@photo-sphere-viewer/video-plugin": "^5.9.0"
+  }
+}

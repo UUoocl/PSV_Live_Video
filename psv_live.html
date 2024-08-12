@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - PSV Video Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="./assets/css/styles.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="viewer"></div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "./node_modules/three/build/three.module.js",
+            "@photo-sphere-viewer/core": "./node_modules/@photo-sphere-viewer/core/index.module.js",
+            "@photo-sphere-viewer/equirectangular-video-adapter": "./node_modules/@photo-sphere-viewer/equirectangular-video-adapter/index.module.js",
+            "@photo-sphere-viewer/video-plugin": "./node_modules/@photo-sphere-viewer/video-plugin/index.module.js",
+            "@photo-sphere-viewer/autorotate-plugin": "./node_modules/@photo-sphere-viewer/autorotate-plugin/index.module.js",
+            "@photo-sphere-viewer/settings-plugin": "./node_modules/@photo-sphere-viewer/settings-plugin/index.module.js",
+            "@photo-sphere-viewer/resolution-plugin": "./node_modules/@photo-sphere-viewer/resolution-plugin/index.module.js"
+        }
+    }
+</script>
+<!-- partial -->
+<script>
+    var localStream; 
+    async function getWindow(){
+        localStream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: { width: 2880, height: 1440 },
+        });
+
+        // Capture application Window
+        // localStream = await navigator.mediaDevices.getDisplayMedia({
+        //     audio: false,
+        //     video: {
+        //         cursor: "never",
+        //         displaySurface: "application",
+        //     },
+        // });
+
+        // Capture Webcam
+        const videoStreamElem = document.createElement("video");
+        console.log(videoStreamElem, localStream)
+        videoStreamElem.autoplay = true
+        videoStreamElem.srcObject = localStream
+        //videoStreamElem.setAttribute("height", 200);
+        videoStreamElem.setAttribute("style", "display:none;");
+        videoStreamElem.setAttribute("id", "camera");
+        
+        let newElement = document.getElementById("viewer");
+        newElement.appendChild(videoStreamElem);
+        const scriptElem = document.createElement("script")
+        scriptElem.src = `./assets/js/psv_video.js`;
+        scriptElem.type = 'module';
+        document.body.appendChild(scriptElem);
+    }  
+    getWindow()
+    
+</script>
+    <!-- <script type="module" src="./assets/js/psv_video.js"></script> -->
+</body>
+</html>
