@@ -9,7 +9,7 @@ This repo modifies the [Equirectangular Video example](https://photo-sphere-view
 
 1. The *psv_live.html* file adds a request to [Get User Media](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) and adds a Video Element to the page body.  
 
-2. The *node_modules/@photo-sphere-viewer/equirectangular-video-adapter/index.module.js* file 
+2. In the *node_modules/@photo-sphere-viewer/equirectangular-video-adapter/index.module.js* file modify the *loadTexture()* function
 
 ``` javascript
 return this.__videoLoadPromise(video).then(() => {
